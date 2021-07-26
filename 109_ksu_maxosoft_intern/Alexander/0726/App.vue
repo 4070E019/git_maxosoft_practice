@@ -4,10 +4,11 @@
 			<!-- <div class="col" v-for="(item, index) in user" :key="index">
 				<child :data="item">
 				</child> -->
-			
 			<div class="col-6 col-md-4">
 				<info :data=data :option=option></info>
 			</div>
+			
+			
 		</div>
 	</div>
 </template>
@@ -23,15 +24,23 @@ export default {
     // child
   },
  data() {
-    return {data : {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    return {
+		data : {
+			labels: ['Январь', 'Февраль', 'Март', 'Aпреля', 'Май', 'Июнь', 'Июль', 'Aвгуст', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
 			datasets:[
 				{
-					label: 'score',
-					backgroundColor: '#f87979',
+					label: 'счет',
+					backgroundColor: 'blue',
 					data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+				},
+				{
+					label: 'счет',
+					backgroundColor: 'yellow',
+					data: [35, 21, 47, 25, 63, 85, 24, 75, 23, 16, 37, 63]
 				}
 			]
+			
+			
 		},
 		option:{
            responsive:true,
