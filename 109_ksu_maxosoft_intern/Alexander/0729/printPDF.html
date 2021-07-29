@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+  <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+  <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+  <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <i-button @click="toPdf">print</i-button>
+
+    <div id="main">
+        徐江弘 崑山科技大學資工系三年級
+<br>學校內最有興趣的一門課:LUA遊戲設計
+    <br>    希望在職場上體驗獲得的部分:體驗專案流程與設計師上班壓力
+       <br> 較有興趣的部分:前端部分，因為目前學校專題個人部分有比較主攻這塊領域
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {
+        toPdf: function () {
+          const bdhtml = window.document.body.innerHTML;
+          const jubuData = document.querySelector('#main').innerHTML;
+          window.document.body.innerHTML = jubuData;
+          window.print();
+          // 重新给页面内容赋值；
+          window.document.body.innerHTML = bdhtml;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
