@@ -20,17 +20,13 @@
       <!-- 注意下面 input 對應的都是 v-model="checkedNames"  -->
   
 
-   
-<div class="faq-body">
- <div v-for="(products, index) in filterByTerm" :key="products" class="faq-question"> 
-
-   
-            <input type="checkbox" v-model="checkedNames" :value="products.weight" :label="index"/>
-        <label class="card-title" style="margin-left" >{{ index }}.{{ products.id }}    weight:{{ products.weight }} </label> 
-    
-        
-</div>
-   </div>
+      <div class="faq-body">
+        <div v-for="(products, index) in filterByTerm" :key="products" class="faq-question">
+          <input type="checkbox" v-model="checkedNames" :value="products" :td="index" />
+          <label class="card-title" style="margin-left" >{{ index }}.{{ products.id }}    weight:{{ products.weight }} </label> 
+      
+        </div>
+      </div>
  <br><br>
    
    
@@ -57,7 +53,9 @@
 
 
        <div class="col-md-6 text-right">
-           <strong>Total:</strong> <span class="price-content">{{total_price}}</span>
+         <h2>
+      Total: <span class="price-content">{{ total_price }}</span>
+    </h2>
            
     </div>
    </div>
@@ -66,13 +64,10 @@
 <script>
 import _ from "lodash";
     import axios from "axios";
-
     
-
     export default {
       name: 'app',
        components: {
-
   },
       data () {
         return {
@@ -106,11 +101,16 @@ import _ from "lodash";
         return products.id.toLowerCase().includes(this.searchTerm);
       });
     },
-     total_price: function() {
-      return _.reduce(this.checkedNames, function(memo,products) {
-        return memo + products.weight;
-      }, 0);
-    }
+    
+      total_price: function () {
+      return _.reduce(
+        this.checkedNames,
+        function (memo, products) {
+          return memo + products.weight;
+        },
+        0
+      );
+    },
   },
     
     
@@ -129,7 +129,6 @@ import _ from "lodash";
 .heading {
   margin-bottom: 30px;
 }
-
  .faq-body {
     width: auto;
     height: 400px;
